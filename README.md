@@ -34,8 +34,8 @@ SweetShop/
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/nirja14/sweet-shop.git
-   cd sweet-shop
+   git clone https://github.com/nirja14/SweetShop.git
+   cd SweetShop
    
 2. Install dependencies:
    ```bash
