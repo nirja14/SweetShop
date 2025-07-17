@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sweet Shop</title>
+  <link rel="stylesheet" href="style.css"
+</head>
+<body>
+  <h1>Sweet Shop</h1>
+  <form id="addForm">
+    <input type="text" id="name" placeholder="Name" required><br>
+    <input type="text" id="category" placeholder="Category" required><br>
+    <input type="number" id="price" placeholder="Price" required><br>
+    <input type="number" id="quantity" placeholder="Quantity" required><br>
+    <button type="submit">Add Sweet</button>
+  </form>
+  <div style="margin-top: 20px;">
+  <h3>Search Sweets</h3>
+  <input type="text" id="searchInput" placeholder="Search by name, category, or price...">
+  <button onclick="searchSweets()">Search</button>
+  <button onclick="loadSweets()">Clear</button><br>
+<h3>Sort By :</h3>
+  <select id="sortSelect" onchange="handleSort()">
+    <option value="">-- Select --</option>
+    <option value="name">Name (A-Z)</option>
+    <option value="name-desc">Name (Z-A)</option>
+    <option value="category">Category (A-Z)</option>
+    <option value="category-desc">Category (Z-A)</option>
+    <option value="price">Price (Low to High)</option>
+    <option value="price-desc">Price (High to Low)</option>
+    <option value="quantity">Quantity (Low to High)</option>
+    <option value="quantity-desc">Quantity (High to Low)</option>
+  </select>
+</div>
+
+
+  <h2>Sweets</h2>
+  <table border="1" id="sweetTable">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
