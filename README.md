@@ -47,7 +47,7 @@ SweetShop/
    npm run dev
    ```
 4. Open the app: 
-   Navigate to [http://localhost:3000](http://localhost:3000)
+   Navigate to [http://localhost:3000](http://localhost:3001)
 
 ---
 
