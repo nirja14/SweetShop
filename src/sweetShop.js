@@ -32,7 +32,6 @@ class SweetShop {
 deleteSweet(id) {
   const index = this.sweets.findIndex(s => s.id === id);
   if (index === -1) return false;
-
   this.sweets.splice(index, 1);
   return true;
 }
@@ -46,6 +45,24 @@ searchSweets({ name, category, minPrice, maxPrice }) {
 
     return matchName && matchCategory && matchMinPrice && matchMaxPrice;
   });
+}
+sortSweets(field, order = 'asc') {
+  const validFields = ['price', 'category'];
+  if (!validFields.includes(field)) return [...this.sweets]; // return unsorted copy
+
+  const sorted = [...this.sweets].sort((a, b) => {
+    if (typeof a[field] === 'string') {
+      return order === 'asc'
+        ? a[field].localeCompare(b[field])
+        : b[field].localeCompare(a[field]);
+    } else {
+      return order === 'asc'
+        ? a[field] - b[field]
+        : b[field] - a[field];
+    }
+  });
+
+  return sorted;
 }
 
 }

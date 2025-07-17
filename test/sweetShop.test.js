@@ -42,7 +42,6 @@ describe('Sweet Shop - Update Sweet', () => {
     });
 
     const updated = shop.getSweets()[0];
-
     expect(updated.name).toBe('Deluxe Kaju Katli');
     expect(updated.category).toBe('Premium Nut-Based');
     expect(updated.price).toBe(75);
@@ -114,5 +113,40 @@ describe('Sweet Shop - Search Sweets', () => {
     expect(result.length).toBe(2);
     expect(result.map(s => s.name)).toContain('Gulab Jamun');
     expect(result.map(s => s.name)).toContain('Gajar Halwa');
+  });
+});
+
+describe('Sweet Shop - Sort Sweets', () => {
+  let shop;
+
+  beforeEach(() => {
+    shop = new SweetShop();
+    shop.addSweet({ name: 'Kaju Katli', category: 'Nut-Based', price: 50, quantity: 20 });
+    shop.addSweet({ name: 'Gulab Jamun', category: 'Milk-Based', price: 30, quantity: 10 });
+    shop.addSweet({ name: 'Gajar Halwa', category: 'Vegetable-Based', price: 40, quantity: 15 });
+  });
+
+  test('should sort sweets by price ascending', () => {
+    const result = shop.sortSweets('price', 'asc');
+    expect(result[0].price).toBe(30);
+    expect(result[2].price).toBe(50);
+  });
+
+  test('should sort sweets by price descending', () => {
+    const result = shop.sortSweets('price', 'desc');
+    expect(result[0].price).toBe(50);
+    expect(result[2].price).toBe(30);
+  });
+
+  test('should sort sweets by category ascending (A-Z)', () => {
+    const result = shop.sortSweets('category', 'asc');
+    expect(result[0].category).toBe('Milk-Based');
+    expect(result[2].category).toBe('Vegetable-Based');
+  });
+
+  test('should sort sweets by category descending (Z-A)', () => {
+    const result = shop.sortSweets('category', 'desc');
+    expect(result[0].category).toBe('Vegetable-Based');
+    expect(result[2].category).toBe('Milk-Based');
   });
 });
