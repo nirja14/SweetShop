@@ -1,0 +1,19 @@
+{
+  "name": "sweetshop",
+  "version": "1.0.0",
+  "main": "index.js",
+ "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+     "test": "jest --coverage --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "jest": "^30.0.4"
+  }
+}
