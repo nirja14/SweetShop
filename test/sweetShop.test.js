@@ -150,3 +150,24 @@ describe('Sweet Shop - Sort Sweets', () => {
     expect(result[2].category).toBe('Milk-Based');
   });
 });
+
+describe('Sweet Shop - View Sweets', () => {
+  test('should return all sweets in the shop', () => {
+    const shop = new SweetShop();
+
+    shop.addSweet({ name: 'Kaju Katli', category: 'Nut-Based', price: 50, quantity: 20 });
+    shop.addSweet({ name: 'Gulab Jamun', category: 'Milk-Based', price: 30, quantity: 10 });
+
+    const sweets = shop.getSweets();
+
+    expect(sweets.length).toBe(2);
+    expect(sweets[0].name).toBe('Kaju Katli');
+    expect(sweets[1].name).toBe('Gulab Jamun');
+  });
+
+  test('should return an empty list if no sweets are available', () => {
+    const shop = new SweetShop();
+    const sweets = shop.getSweets();
+    expect(sweets.length).toBe(0);
+  });
+});
