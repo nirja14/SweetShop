@@ -59,3 +59,30 @@ describe('Sweet Shop - Update Sweet', () => {
     expect(result).toBe(false); // or throw an error, depending on your choice
   });
 });
+
+describe('Sweet Shop - Delete Sweet', () => {
+  test('should delete a sweet by ID', () => {
+    const shop = new SweetShop();
+
+    shop.addSweet({
+      name: 'Kaju Katli',
+      category: 'Nut-Based',
+      price: 50,
+      quantity: 20
+    });
+
+    const sweet = shop.getSweets()[0];
+    const deleteResult = shop.deleteSweet(sweet.id);
+    const sweets = shop.getSweets();
+
+    expect(deleteResult).toBe(true);
+    expect(sweets.length).toBe(0);
+  });
+
+  test('should return false when deleting a non-existent sweet', () => {
+    const shop = new SweetShop();
+
+    const deleteResult = shop.deleteSweet(9999);
+    expect(deleteResult).toBe(false);
+  });
+});

@@ -29,6 +29,13 @@ class SweetShop {
 
   return true;
 }
+deleteSweet(id) {
+  const index = this.sweets.findIndex(s => s.id === id);
+  if (index === -1) return false;
+
+  this.sweets.splice(index, 1);
+  return true;
+}
 
 }
 
