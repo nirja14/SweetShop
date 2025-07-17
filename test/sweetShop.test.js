@@ -86,3 +86,33 @@ describe('Sweet Shop - Delete Sweet', () => {
     expect(deleteResult).toBe(false);
   });
 });
+
+describe('Sweet Shop - Search Sweets', () => {
+  let shop;
+
+  beforeEach(() => {
+    shop = new SweetShop();
+    shop.addSweet({ name: 'Kaju Katli', category: 'Nut-Based', price: 50, quantity: 20 });
+    shop.addSweet({ name: 'Gulab Jamun', category: 'Milk-Based', price: 30, quantity: 15 });
+    shop.addSweet({ name: 'Gajar Halwa', category: 'Vegetable-Based', price: 40, quantity: 10 });
+  });
+
+  test('should search sweets by name', () => {
+    const result = shop.searchSweets({ name: 'Gulab Jamun' });
+    expect(result.length).toBe(1);
+    expect(result[0].category).toBe('Milk-Based');
+  });
+
+  test('should search sweets by category', () => {
+    const result = shop.searchSweets({ category: 'Nut-Based' });
+    expect(result.length).toBe(1);
+    expect(result[0].name).toBe('Kaju Katli');
+  });
+
+  test('should search sweets by price range', () => {
+    const result = shop.searchSweets({ minPrice: 30, maxPrice: 45 });
+    expect(result.length).toBe(2);
+    expect(result.map(s => s.name)).toContain('Gulab Jamun');
+    expect(result.map(s => s.name)).toContain('Gajar Halwa');
+  });
+});

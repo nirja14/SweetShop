@@ -37,6 +37,17 @@ deleteSweet(id) {
   return true;
 }
 
+searchSweets({ name, category, minPrice, maxPrice }) {
+  return this.sweets.filter(sweet => {
+    const matchName = name ? sweet.name.toLowerCase().includes(name.toLowerCase()) : true;
+    const matchCategory = category ? sweet.category.toLowerCase().includes(category.toLowerCase()) : true;
+    const matchMinPrice = minPrice !== undefined ? sweet.price >= minPrice : true;
+    const matchMaxPrice = maxPrice !== undefined ? sweet.price <= maxPrice : true;
+
+    return matchName && matchCategory && matchMinPrice && matchMaxPrice;
+  });
+}
+
 }
 
 module.exports = SweetShop;
